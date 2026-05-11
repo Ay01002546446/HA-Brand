@@ -12,6 +12,7 @@ const AdminLogin = () => {
     }
   }, [navigate]);
 
+  
   const handleSubmit = (e) => {
     e.preventDefault();
     if (password === '123456') {
