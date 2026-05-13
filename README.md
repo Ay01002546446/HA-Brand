@@ -1,23 +1,79 @@
-# Getting Started with Create React App
+# HA Brand - Premium Men's Fashion
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A premium men's fashion e-commerce website featuring clean tailoring, strong silhouettes, and luxury details in black, white, and steel tones.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- 🏠 Modern homepage with hero section
+- 👔 Product collection showcase
+- 🛒 Shopping cart with localStorage persistence
+- 🔔 Toast notifications for user actions
+- 📱 Responsive design with Tailwind CSS
+- 🚀 Built with React and React Router
+- 🎨 Framer Motion animations
 
-### `npm start`
+## Tech Stack
 
-Runs the app in the development mode.\
+- **Frontend**: React 19, React Router 7
+- **Styling**: Tailwind CSS, PostCSS
+- **Animations**: Framer Motion
+- **Build Tool**: Create React App
+- **Notifications**: React Hot Toast
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js (v14 or higher)
+- npm or yarn
+
+### Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/Ay01002546446/HA-Brand.git
+cd HA-Brand
+```
+
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Start the development server:
+```bash
+npm start
+```
+
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Build for Production
 
-### `npm test`
+```bash
+npm run build
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Project Structure
+
+```
+src/
+├── components/     # Reusable UI components
+├── context/        # React context for state management
+├── pages/          # Page components
+└── App.js          # Main app component
+```
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## License
+
+This project is private and proprietary.
 
 ### `npm run build`
 
