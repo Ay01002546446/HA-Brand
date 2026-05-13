@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast';
 import { CartContext, OrderContext } from '../context/CartContext';
 
 const Checkout = () => {
@@ -21,6 +22,18 @@ const Checkout = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!formData.name.trim()) {
+      toast.error('Please enter your full name');
+      return;
+    }
+    if (!formData.email.trim() || !/\S+@\S+\.\S+/.test(formData.email)) {
+      toast.error('Please enter a valid email address');
+      return;
+    }
+    if (!formData.address.trim()) {
+      toast.error('Please enter your shipping address');
+      return;
+    }
     const order = {
       id: Date.now(),
       items: cart.items,
@@ -29,6 +42,7 @@ const Checkout = () => {
       date: new Date().toISOString(),
     };
     placeOrder(order);
+    toast.success('Order placed successfully!');
     navigate('/dashboard');
   };
 

@@ -1,4 +1,5 @@
 import React, { createContext, useReducer, useEffect } from 'react';
+import toast from 'react-hot-toast';
 
 const CartContext = createContext();
 
@@ -87,6 +88,7 @@ export const CartProvider = ({ children }) => {
 
   const addToCart = (product) => {
     dispatchCart({ type: 'ADD_TO_CART', payload: product });
+    toast.success(`${product.title} added to cart!`);
   };
 
   const updateOrderStatus = (id, status) => {

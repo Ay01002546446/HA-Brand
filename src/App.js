@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Toaster } from 'react-hot-toast';
 import { CartProvider } from './context/CartContext';
 import Header from './components/Header';
 import Home from './pages/Home';
@@ -10,6 +11,7 @@ import Cart from './pages/Cart';
 import Checkout from './pages/Checkout';
 import Dashboard from './pages/Dashboard';
 import AdminLogin from './pages/AdminLogin';
+import NotFound from './pages/NotFound';
 
 function App() {
   return (
@@ -26,8 +28,10 @@ function App() {
             <Route path="/checkout" element={<Checkout />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/admin" element={<AdminLogin />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
+        <Toaster position="top-right" />
       </Router>
     </CartProvider>
   );
