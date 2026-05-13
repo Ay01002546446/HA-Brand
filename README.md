@@ -30,17 +30,20 @@ A premium men's fashion e-commerce website featuring clean tailoring, strong sil
 ### Installation
 
 1. Clone the repository:
+
 ```bash
 git clone https://github.com/Ay01002546446/HA-Brand.git
 cd HA-Brand
 ```
 
 2. Install dependencies:
+
 ```bash
 npm install
 ```
 
 3. Start the development server:
+
 ```bash
 npm start
 ```
