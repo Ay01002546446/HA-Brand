@@ -5,13 +5,23 @@ const CartContext = createContext();
 
 const cartReducer = (state, action) => {
   switch (action.type) {
-    case 'ADD_TO_CART':
-      const existingItem = state.items.find(item => item.id === action.payload.id);
+    case 'ADD_TO_CART': {
+      const newItem = action.payload;
+      // Check if item with same ID, size, and color exists
+      const existingItem = state.items.find(
+        item =>
+          item.id === newItem.id &&
+          item.size === newItem.size &&
+          item.color === newItem.color
+      );
+      
       if (existingItem) {
         return {
           ...state,
           items: state.items.map(item =>
-            item.id === action.payload.id
+            item.id === newItem.id &&
+            item.size === newItem.size &&
+            item.color === newItem.color
               ? { ...item, quantity: item.quantity + 1 }
               : item
           ),
@@ -19,19 +29,26 @@ const cartReducer = (state, action) => {
       } else {
         return {
           ...state,
-          items: [...state.items, { ...action.payload, quantity: 1 }],
+          items: [...state.items, { ...newItem, quantity: 1 }],
         };
       }
+    }
     case 'REMOVE_FROM_CART':
       return {
         ...state,
-        items: state.items.filter(item => item.id !== action.payload),
+        items: state.items.filter(
+          item => !(item.id === action.payload.id && 
+                    item.size === action.payload.size &&
+                    item.color === action.payload.color)
+        ),
       };
     case 'UPDATE_QUANTITY':
       return {
         ...state,
         items: state.items.map(item =>
-          item.id === action.payload.id
+          item.id === action.payload.id &&
+          item.size === action.payload.size &&
+          item.color === action.payload.color
             ? { ...item, quantity: action.payload.quantity }
             : item
         ),
@@ -95,15 +112,15 @@ export const CartProvider = ({ children }) => {
     dispatchOrder({ type: 'UPDATE_ORDER_STATUS', payload: { id, status } });
   };
 
-  const removeFromCart = (id) => {
-    dispatchCart({ type: 'REMOVE_FROM_CART', payload: id });
+  const removeFromCart = (id, size, color) => {
+    dispatchCart({ type: 'REMOVE_FROM_CART', payload: { id, size, color } });
   };
 
-  const updateQuantity = (id, quantity) => {
+  const updateQuantity = (id, quantity, size, color) => {
     if (quantity <= 0) {
-      removeFromCart(id);
+      removeFromCart(id, size, color);
     } else {
-      dispatchCart({ type: 'UPDATE_QUANTITY', payload: { id, quantity } });
+      dispatchCart({ type: 'UPDATE_QUANTITY', payload: { id, quantity, size, color } });
     }
   };
 
