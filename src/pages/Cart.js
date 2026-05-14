@@ -1,10 +1,9 @@
 import React, { useContext } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { CartContext } from '../context/CartContext';
 
 const Cart = ({ onOpenDrawer }) => {
   const { cart, removeFromCart, updateQuantity, clearCart } = useContext(CartContext);
-  const navigate = useNavigate();
   const publicUrl = process.env.PUBLIC_URL;
 
   const total = cart.items.reduce((sum, item) => sum + item.price * item.quantity, 0);
